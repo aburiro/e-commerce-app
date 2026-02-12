@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'title': 'Summer Sale',
       'subtitle': '30% Off',
       'description': 'On All Items',
-      'image': 'assets/home_screen_image/summer_banner.png',
+      'image': 'assets/home_screen_image/home.png',
     },
   ];
 
@@ -135,7 +135,9 @@ class _HomeScreenState extends State<HomeScreen> {
               CircleAvatar(
                 radius: 24,
                 backgroundColor: Colors.grey[300],
-                child: const Icon(Icons.person, color: Colors.grey),
+                backgroundImage: const AssetImage(
+                  'assets/home_screen_image/user_profile.png',
+                ),
               ),
               const SizedBox(width: 12),
               const Column(
@@ -189,6 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBannerSlider() {
+    final slide = bannerSlides[_currentBannerIndex];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Container(
@@ -215,8 +218,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Get Winter Discount',
+                      Text(
+                        slide['title'] ?? '',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.white70,
@@ -224,16 +227,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        '20% Off',
+                      Text(
+                        slide['subtitle'] ?? '',
                         style: TextStyle(
                           fontSize: 32,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Text(
-                        'For Children',
+                      Text(
+                        slide['description'] ?? '',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.white,
@@ -250,10 +253,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Icon(
-                      Icons.image,
-                      color: Colors.white30,
-                      size: 40,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        slide['image'] ?? '',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ],
@@ -271,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(
-          3,
+          bannerSlides.length,
           (index) => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Container(
@@ -387,7 +392,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   // Image Placeholder
                   Center(
-                    child: Icon(Icons.image, color: Colors.grey[400], size: 40),
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   // Favorite Button
                   Positioned(
