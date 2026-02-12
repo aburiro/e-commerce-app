@@ -252,21 +252,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           const SizedBox(height: 12),
           _buildPaymentOption(
             'paypal',
-            'assets/paypal.png',
             'Paypal',
             Icons.payment,
           ),
           const SizedBox(height: 10),
           _buildPaymentOption(
             'credit_card',
-            'assets/credit_card.png',
             'Credit Card',
             Icons.credit_card,
           ),
           const SizedBox(height: 10),
           _buildPaymentOption(
             'cash',
-            'assets/cash.png',
             'Cash',
             Icons.currency_exchange,
           ),
@@ -299,7 +296,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   Widget _buildPaymentOption(
     String id,
-    String imagePath,
     String label,
     IconData icon,
   ) {

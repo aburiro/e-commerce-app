@@ -109,10 +109,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               width: 300,
               height: 300,
               decoration: BoxDecoration(
-                color: Colors.grey[400],
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(Icons.image, color: Colors.grey[600], size: 80),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'assets/home_screen_image/shoes.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
         ),

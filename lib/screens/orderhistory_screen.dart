@@ -227,12 +227,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
             decoration: BoxDecoration(
               color: Colors.grey[300],
               borderRadius: BorderRadius.circular(10),
-              image: const DecorationImage(
-                image: AssetImage('assets/placeholder.png'),
-                fit: BoxFit.cover,
-              ),
             ),
-            child: Icon(Icons.image, color: Colors.grey[500], size: 40),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(order.image, fit: BoxFit.cover),
+            ),
           ),
           const SizedBox(width: 12),
 

@@ -79,14 +79,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         shape: BoxShape.circle,
                         color: Colors.grey[300],
                         image: const DecorationImage(
-                          image: AssetImage('assets/profile.png'),
+                          image: AssetImage(
+                            'assets/home_screen_image/profiles.png',
+                          ),
                           fit: BoxFit.cover,
                         ),
-                      ),
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.grey[600],
-                        size: 28,
                       ),
                     ),
                     const SizedBox(width: 12),

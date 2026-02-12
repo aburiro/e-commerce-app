@@ -14,7 +14,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 1,
       name: 'Watch',
       price: 40,
-      image: 'assets/watch.png',
+      image: 'assets/home_screen_image/watch.png',
       isFavorite: false,
       color: Colors.black,
     ),
@@ -22,7 +22,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 2,
       name: 'Nike Shoes',
       price: 430,
-      image: 'assets/shoes.png',
+      image: 'assets/home_screen_image/shoes.png',
       isFavorite: false,
       color: Colors.grey,
     ),
@@ -30,7 +30,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 3,
       name: 'LG TV',
       price: 330,
-      image: 'assets/tv.png',
+      image: 'assets/home_screen_image/tv.png',
       isFavorite: false,
       color: Colors.black,
     ),
@@ -38,7 +38,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 4,
       name: 'Airpods',
       price: 333,
-      image: 'assets/airpods.png',
+      image: 'assets/home_screen_image/airpods.png',
       isFavorite: false,
       color: Colors.black,
     ),
@@ -46,7 +46,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 5,
       name: 'Jacket',
       price: 50,
-      image: 'assets/jacket.png',
+      image: 'assets/home_screen_image/jacket.png',
       isFavorite: false,
       color: Colors.grey,
     ),
@@ -54,7 +54,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 6,
       name: 'Hoodie',
       price: 400,
-      image: 'assets/hoodie.png',
+      image: 'assets/home_screen_image/hoodie.png',
       isFavorite: false,
       color: Colors.grey,
     ),
@@ -62,7 +62,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 7,
       name: 'T-Shirt',
       price: 25,
-      image: 'assets/tshirt.png',
+      image: 'assets/home_screen_image/jacket.png',
       isFavorite: false,
       color: Colors.black,
     ),
@@ -70,7 +70,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       id: 8,
       name: 'Sneakers',
       price: 120,
-      image: 'assets/sneakers.png',
+      image: 'assets/home_screen_image/shoes.png',
       isFavorite: false,
       color: Colors.grey,
     ),
@@ -153,7 +153,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
       actions: [
         IconButton(
           icon: const Icon(Icons.search, color: Colors.black),
-          onPressed: () => Navigator.pushNamed(context, AppRoutes.searchResults),
+          onPressed: () =>
+              Navigator.pushNamed(context, AppRoutes.searchResults),
         ),
         IconButton(
           icon: const Icon(Icons.tune, color: Colors.black),
@@ -193,10 +194,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     children: [
                       // Image Placeholder
                       Center(
-                        child: Icon(
-                          Icons.image,
-                          color: Colors.grey[400],
-                          size: 50,
+                        child: Image.asset(
+                          product.image,
+                          fit: BoxFit.contain,
                         ),
                       ),
                       // Favorite Button

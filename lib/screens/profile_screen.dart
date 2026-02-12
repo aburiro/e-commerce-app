@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               shape: BoxShape.circle,
               color: Colors.grey[300],
               image: const DecorationImage(
-                image: AssetImage('assets/profile.png'),
+                image: AssetImage('assets/home_screen_image/profiles.png'),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
@@ -58,7 +58,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            child: Icon(Icons.person, color: Colors.grey[600], size: 60),
           ),
           const SizedBox(height: 16),
           // User Name

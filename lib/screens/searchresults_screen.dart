@@ -320,10 +320,9 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                     children: [
                       // Image Placeholder
                       Center(
-                        child: Icon(
-                          Icons.image,
-                          color: Colors.grey[400],
-                          size: 50,
+                        child: Image.asset(
+                          product.image,
+                          fit: BoxFit.contain,
                         ),
                       ),
                       // Favorite Button

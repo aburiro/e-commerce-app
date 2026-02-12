@@ -217,7 +217,10 @@ class _CartScreenState extends State<CartScreen> {
               color: Colors.grey[300],
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(Icons.image, color: Colors.grey[500], size: 40),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(item.image, fit: BoxFit.cover),
+            ),
           ),
           const SizedBox(width: 12),
           // Product Info
