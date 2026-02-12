@@ -16,7 +16,7 @@ class _CartScreenState extends State<CartScreen> {
       brand: 'Rolex',
       price: 40,
       quantity: 2,
-      image: 'assets/watch.png',
+      image: 'assets/home_screen_image/watch.png',
     ),
     CartItem(
       id: 2,
@@ -24,7 +24,7 @@ class _CartScreenState extends State<CartScreen> {
       brand: 'Apple',
       price: 333,
       quantity: 2,
-      image: 'assets/airpods.png',
+      image: 'assets/home_screen_image/airpods.png',
     ),
     CartItem(
       id: 3,
@@ -32,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
       brand: 'Puma',
       price: 50,
       quantity: 2,
-      image: 'assets/hoodie.png',
+      image: 'assets/home_screen_image/hoodie.png',
     ),
   ];
 
