@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -78,6 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       product.isFavorite = !product.isFavorite;
     });
+  }
+
+  void _onBottomNavTapped(int index) {
+    setState(() {
+      _selectedNavIndex = index;
+    });
+
+    AppRoutes.goToMainTab(context, index);
   }
 
   @override
@@ -162,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // Notification Icon
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, AppRoutes.orderHistory),
             color: Colors.grey,
           ),
         ],
@@ -174,6 +183,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextField(
+        readOnly: true,
+        onTap: () => Navigator.pushNamed(context, AppRoutes.searchResults),
         decoration: InputDecoration(
           hintText: 'Search here',
           hintStyle: TextStyle(color: Colors.grey[400]),
@@ -310,7 +321,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.productList),
             child: const Text(
               'See All',
               style: TextStyle(
@@ -340,7 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, AppRoutes.productList),
             child: const Text(
               'See All',
               style: TextStyle(
@@ -377,7 +388,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildProductCard(Product product) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Navigator.pushNamed(context, AppRoutes.productDetails),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -461,11 +472,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildBottomNavigation() {
     return BottomNavigationBar(
       currentIndex: _selectedNavIndex,
-      onTap: (index) {
-        setState(() {
-          _selectedNavIndex = index;
-        });
-      },
+      onTap: _onBottomNavTapped,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
       selectedItemColor: const Color(0xFF6C63FF),

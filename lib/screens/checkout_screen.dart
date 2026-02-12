@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final int items;
@@ -369,6 +370,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               duration: const Duration(milliseconds: 1000),
               backgroundColor: const Color(0xFF6C63FF),
             ),
+          );
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.orderHistory,
+            (route) => route.settings.name == AppRoutes.home,
           );
         },
         child: Container(

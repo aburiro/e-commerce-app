@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './setting_screen.dart';
+import '../navigation/app_routes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -100,6 +100,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: Icons.settings_outlined,
             title: 'Setting',
             onTap: () => _navigateToSettings(),
+          ),
+          const SizedBox(height: 10),
+          _buildMenuOption(
+            icon: Icons.receipt_long_outlined,
+            title: 'Orders',
+            onTap: () => Navigator.pushNamed(context, AppRoutes.orderHistory),
           ),
           const SizedBox(height: 10),
           _buildMenuOption(
@@ -217,6 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         setState(() {
           _selectedNavIndex = index;
         });
+        AppRoutes.goToMainTab(context, index);
       },
     );
   }
@@ -224,18 +231,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _navigateToProfile() {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Navigate to Profile Details'),
-        duration: Duration(milliseconds: 800),
-        backgroundColor: Color(0xFF6C63FF),
+        content: Text('You are already on Profile'),
+        duration: Duration(milliseconds: 700),
       ),
     );
   }
 
   void _navigateToSettings() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const SettingsScreen()),
-    );
+    Navigator.pushNamed(context, AppRoutes.settingsRoute);
   }
 
   void _showMessage(String title) {

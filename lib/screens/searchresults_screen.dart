@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class SearchResultsScreen extends StatefulWidget {
   const SearchResultsScreen({Key? key}) : super(key: key);
@@ -125,6 +126,19 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     });
   }
 
+  void _openFilters() async {
+    final result = await Navigator.pushNamed(context, AppRoutes.filter);
+    if (result != null && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Filters updated'),
+          duration: Duration(milliseconds: 700),
+          backgroundColor: Color(0xFF6C63FF),
+        ),
+      );
+    }
+  }
+
   @override
   void dispose() {
     _searchController.dispose();
@@ -199,6 +213,11 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                 child: const Icon(Icons.close, color: Colors.grey, size: 18),
               ),
             ),
+          const SizedBox(width: 12),
+          GestureDetector(
+            onTap: _openFilters,
+            child: const Icon(Icons.tune, color: Colors.grey, size: 22),
+          ),
         ],
       ),
     );
@@ -274,15 +293,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
 
   Widget _buildSearchResultCard(SearchProduct product) {
     return GestureDetector(
-      onTap: () {
-        // Navigate to product details
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Viewing ${product.name}'),
-            duration: const Duration(milliseconds: 600),
-          ),
-        );
-      },
+      onTap: () => Navigator.pushNamed(context, AppRoutes.productDetails),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -449,7 +460,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
         ),
       ],
       onTap: (index) {
-        // Handle navigation
+        AppRoutes.goToMainTab(context, index);
       },
     );
   }

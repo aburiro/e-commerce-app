@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
@@ -43,11 +44,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Proceeding to checkout with size $selectedSize'),
-        duration: const Duration(milliseconds: 1000),
-        backgroundColor: const Color(0xFF6C63FF),
+    Navigator.pushNamed(
+      context,
+      AppRoutes.checkout,
+      arguments: const CheckoutArgs(
+        items: 1,
+        subtotal: 430,
+        discount: 0,
+        deliveryCharges: 2,
+        total: 432,
       ),
     );
   }
@@ -381,10 +386,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8),
               ],
             ),
-            child: const Icon(
-              Icons.shopping_bag_outlined,
-              color: Colors.grey,
-              size: 22,
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, AppRoutes.cart),
+              child: const Icon(
+                Icons.shopping_bag_outlined,
+                color: Colors.grey,
+                size: 22,
+              ),
             ),
           ),
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './checkout_screen.dart';
+import '../navigation/app_routes.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -94,16 +94,15 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     // Navigate to checkout screen
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) => CheckoutScreen(
-          items: cartItems.length,
-          subtotal: subtotal,
-          discount: discount,
-          deliveryCharges: deliveryCharges,
-          total: total,
-        ),
+      AppRoutes.checkout,
+      arguments: CheckoutArgs(
+        items: cartItems.length,
+        subtotal: subtotal,
+        discount: discount,
+        deliveryCharges: deliveryCharges,
+        total: total,
       ),
     );
   }

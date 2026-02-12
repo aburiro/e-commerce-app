@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -149,21 +150,23 @@ class _ProductListScreenState extends State<ProductListScreen> {
         ),
       ),
       centerTitle: true,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.search, color: Colors.black),
+          onPressed: () => Navigator.pushNamed(context, AppRoutes.searchResults),
+        ),
+        IconButton(
+          icon: const Icon(Icons.tune, color: Colors.black),
+          onPressed: () => Navigator.pushNamed(context, AppRoutes.filter),
+        ),
+      ],
       leadingWidth: 56,
     );
   }
 
   Widget _buildProductCard(ProductItem product) {
     return GestureDetector(
-      onTap: () {
-        // Navigate to product detail screen
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Viewing ${product.name}'),
-            duration: const Duration(milliseconds: 600),
-          ),
-        );
-      },
+      onTap: () => Navigator.pushNamed(context, AppRoutes.productDetails),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
