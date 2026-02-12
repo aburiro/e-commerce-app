@@ -110,18 +110,22 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(12),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-          childAspectRatio: 0.85,
+      body: SingleChildScrollView(
+        child: GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(12),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 0.85,
+          ),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return _buildProductCard(products[index]);
+          },
         ),
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return _buildProductCard(products[index]);
-        },
       ),
     );
   }
@@ -194,10 +198,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     children: [
                       // Image Placeholder
                       Center(
-                        child: Image.asset(
-                          product.image,
-                          fit: BoxFit.contain,
-                        ),
+                        child: Image.asset(product.image, fit: BoxFit.contain),
                       ),
                       // Favorite Button
                       Positioned(

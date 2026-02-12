@@ -150,16 +150,16 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
-      body: Column(
-        children: [
-          _buildSearchHeader(),
-          if (searchResults.isNotEmpty) _buildResultsInfo(),
-          Expanded(
-            child: searchResults.isEmpty
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _buildSearchHeader(),
+            if (searchResults.isNotEmpty) _buildResultsInfo(),
+            searchResults.isEmpty
                 ? _buildEmptyState()
                 : _buildSearchResultsGrid(),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: _buildBottomNavigation(),
     );
@@ -277,6 +277,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
 
   Widget _buildSearchResultsGrid() {
     return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(12),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -320,10 +322,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                     children: [
                       // Image Placeholder
                       Center(
-                        child: Image.asset(
-                          product.image,
-                          fit: BoxFit.contain,
-                        ),
+                        child: Image.asset(product.image, fit: BoxFit.contain),
                       ),
                       // Favorite Button
                       Positioned(
@@ -353,15 +352,15 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                             Text(
                               product.name,
                               style: const TextStyle(
-                                fontSize: 14,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
-                                height: 1.2,
+                                height: 3.2,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 10),
                             Text(
                               '\$${product.price}',
                               style: const TextStyle(
