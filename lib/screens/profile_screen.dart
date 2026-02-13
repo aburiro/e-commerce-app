@@ -185,7 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Colors.red,
+            color: Color(0xFF6C63FF),
           ),
         ),
       ),
@@ -254,7 +254,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign Out'),
+        title: const Text(
+          'Sign Out',
+          style: TextStyle(color: Color(0xFF6C63FF)),
+        ),
         content: const Text('Are you sure you want to sign out?'),
         actions: [
           TextButton(
@@ -268,11 +271,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SnackBar(
                   content: Text('Signed out successfully'),
                   duration: Duration(milliseconds: 800),
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xFF6C63FF),
                 ),
               );
             },
-            child: const Text('Sign Out', style: TextStyle(color: Colors.red)),
+            child: const Text(
+              'Sign Out',
+              style: TextStyle(color: Color(0xFF6C63FF)),
+            ),
           ),
         ],
       ),
