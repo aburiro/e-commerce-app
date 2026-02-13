@@ -124,6 +124,8 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             ),
+
+      bottomNavigationBar: _buildBottomNavigation(),
     );
   }
 
@@ -144,12 +146,12 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       centerTitle: true,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.more_vert, color: Colors.black),
-          onPressed: () {},
-        ),
-      ],
+      // actions: [
+      //   IconButton(
+      //     icon: const Icon(Icons.more_vert, color: Colors.black),
+      //     onPressed: () {},
+      //   ),
+      // ],
     );
   }
 
@@ -448,6 +450,42 @@ class _CartScreenState extends State<CartScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildBottomNavigation() {
+    return BottomNavigationBar(
+      currentIndex: 1,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      selectedItemColor: const Color(0xFF6C63FF),
+      unselectedItemColor: Colors.grey[400],
+      elevation: 8,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_filled, color: Colors.grey[400]),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search, color: Colors.grey[400]),
+          label: '',
+        ),
+
+        BottomNavigationBarItem(
+          icon: const Icon(
+            Icons.shopping_bag_outlined,
+            color: Color(0xFF6C63FF),
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline, color: Colors.grey[400]),
+          label: '',
+        ),
+      ],
+      onTap: (index) {
+        AppRoutes.goToMainTab(context, index);
+      },
     );
   }
 }
