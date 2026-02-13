@@ -311,20 +311,16 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Product Image Container
+              // 🔹 Image Section (flexible height)
               Expanded(
-                flex: 3,
                 child: Container(
                   color: product.backgroundColor,
                   child: Stack(
                     children: [
-                      // Image Placeholder
                       Center(
                         child: Image.asset(product.image, fit: BoxFit.contain),
                       ),
-                      // Favorite Button
                       Positioned(
                         top: 8,
                         right: 8,
@@ -334,51 +330,39 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                   ),
                 ),
               ),
-              // Product Info
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Product Name and Price
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              product.name,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                                height: 3.2,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              '\$${product.price}',
-                              style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF6C63FF),
-                              ),
-                            ),
-                          ],
-                        ),
+
+              // 🔹 Info Section (wraps content, no flex = no overflow)
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min, // 💥 prevents overflow
+                  children: [
+                    Text(
+                      product.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
-                      // Add to Cart Button
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: _buildAddToCartButton(product),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '\$${product.price}',
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF6C63FF),
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 6),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: _buildAddToCartButton(product),
+                    ),
+                  ],
                 ),
               ),
             ],
