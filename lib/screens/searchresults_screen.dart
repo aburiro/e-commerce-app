@@ -10,7 +10,7 @@ class SearchResultsScreen extends StatefulWidget {
 
 class _SearchResultsScreenState extends State<SearchResultsScreen> {
   late TextEditingController _searchController;
-  String _searchQuery = 'Shoes';
+  String _searchQuery = '';
   List<SearchProduct> searchResults = [];
 
   final List<SearchProduct> allProducts = [
