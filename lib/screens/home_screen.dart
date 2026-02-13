@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
+import './product_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'title': 'Summer Sale',
       'subtitle': '30% Off',
       'description': 'On All Items',
-      'image': 'assets/home_screen_image/home.png',
+      'image': 'assets/home_screen_image/child_image.png',
     },
   ];
 
@@ -157,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                   Text(
-                    'John William',
+                    'Jameel Ahmed',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -170,8 +171,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           // Notification Icon
           IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () => Navigator.pushNamed(context, AppRoutes.orderHistory),
+            icon: const Icon(
+              Icons.notifications_outlined,
+              color: Color(0xFF6C63FF),
+            ),
+            onPressed: () =>
+                Navigator.pushNamed(context, AppRoutes.orderHistory),
             color: Colors.grey,
           ),
         ],
@@ -388,11 +393,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildProductCard(Product product) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, AppRoutes.productDetails),
+      onTap: () => Navigator.pushNamed(
+        context,
+        AppRoutes.productDetails,
+        arguments: ProductDetailsArgs(product: product),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Product Image Container
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -401,14 +409,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Stack(
                 children: [
-                  // Image Placeholder
                   Center(
-                    child: Image.asset(
-                      product.image,
-                      fit: BoxFit.contain,
-                    ),
+                    child: Image.asset(product.image, fit: BoxFit.contain),
                   ),
-                  // Favorite Button
                   Positioned(
                     top: 8,
                     right: 8,
@@ -419,12 +422,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 4,
-                            ),
-                          ],
                         ),
                         child: Icon(
                           product.isFavorite
@@ -443,27 +440,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          // Product Name
-          Text(
-            product.name,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          // Product Price
-          Text(
-            '\$${product.price}',
-            style: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF6C63FF),
-            ),
-          ),
+          Text(product.name),
+          Text('\$${product.price}'),
         ],
       ),
     );
@@ -518,21 +496,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-}
-
-// Product Model
-class Product {
-  final int id;
-  final String name;
-  final int price;
-  final String image;
-  bool isFavorite;
-
-  Product({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.image,
-    required this.isFavorite,
-  });
 }

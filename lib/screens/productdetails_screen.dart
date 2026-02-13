@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
+import './product_model.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
@@ -11,6 +12,20 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   bool isFavorite = false;
   String? selectedSize;
+
+  late Product product;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ProductDetailsArgs;
+
+    product = args.product;
+    isFavorite = product.isFavorite;
+  }
+
   int reviewCount = 20;
   double rating = 4.5;
 
@@ -114,10 +129,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                  'assets/home_screen_image/shoes.png',
-                  fit: BoxFit.contain,
-                ),
+                child: Image.asset(product.image, fit: BoxFit.contain),
               ),
             ),
           ),
@@ -191,8 +203,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Nike Shoes',
+              Text(
+                product.name,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -216,9 +228,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               color: const Color(0xFF6C63FF),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Text(
-              '\$430',
-              style: TextStyle(
+            child: Text(
+              '\$${product.price}',
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
