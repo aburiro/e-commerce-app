@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
 import './product_model.dart';
+import './order_store.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
@@ -52,24 +53,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please select a size'),
-          duration: Duration(milliseconds: 800),
           backgroundColor: Colors.red,
         ),
       );
       return;
     }
 
-    Navigator.pushNamed(
-      context,
-      AppRoutes.checkout,
-      arguments: const CheckoutArgs(
-        items: 1,
-        subtotal: 430,
-        discount: 0,
-        deliveryCharges: 2,
-        total: 432,
+    final newOrder = Order(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      productName: product.name,
+      brand: 'Brand',
+      price: product.price.toDouble(),
+      image: product.image,
+      status: 'Active',
+      orderDate: DateTime.now().toString().split(' ')[0],
+    );
+
+    OrderStore.addOrder(newOrder);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Order placed successfully'),
+        backgroundColor: Color(0xFF6C63FF),
       ),
     );
+
+    Navigator.pushNamed(context, AppRoutes.orderHistory);
   }
 
   @override

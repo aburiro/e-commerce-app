@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './order_store.dart';
 
 class OrderHistoryScreen extends StatefulWidget {
   const OrderHistoryScreen({Key? key}) : super(key: key);
@@ -11,68 +12,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  final List<Order> activeOrders = [
-    Order(
-      id: 'ORD001',
-      productName: 'Watch',
-      brand: 'Rolex',
-      price: 40,
-      image: 'assets/home_screen_image/watch.png',
-      status: 'Active',
-      orderDate: '2024-02-10',
-    ),
-    Order(
-      id: 'ORD002',
-      productName: 'Airpods',
-      brand: 'Apple',
-      price: 333,
-      image: 'assets/home_screen_image/airpods.png',
-      status: 'Active',
-      orderDate: '2024-02-12',
-    ),
-    Order(
-      id: 'ORD003',
-      productName: 'Hoodie',
-      brand: 'Puma',
-      price: 50,
-      image: 'assets/home_screen_image/hoodie.png',
-      status: 'Active',
-      orderDate: '2024-02-15',
-    ),
-  ];
+  final List<Order> activeOrders = [];
 
-  final List<Order> completedOrders = [
-    Order(
-      id: 'ORD004',
-      productName: 'Nike Shoes',
-      brand: 'Nike',
-      price: 430,
-      image: 'assets/home_screen_image/shoes.png',
-      status: 'Completed',
-      orderDate: '2024-01-20',
-    ),
-    Order(
-      id: 'ORD005',
-      productName: 'T-Shirt',
-      brand: 'Adidas',
-      price: 25,
-      image: 'assets/home_screen_image/airpods.png',
-      status: 'Completed',
-      orderDate: '2024-01-15',
-    ),
-  ];
+  final List<Order> completedOrders = [];
 
-  final List<Order> cancelledOrders = [
-    Order(
-      id: 'ORD006',
-      productName: 'Jacket',
-      brand: 'Gucci',
-      price: 400,
-      image: 'assets/home_screen_image/jacket.png',
-      status: 'Cancelled',
-      orderDate: '2024-01-10',
-    ),
-  ];
+  final List<Order> cancelledOrders = [];
 
   @override
   void initState() {
@@ -108,9 +52,9 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                _buildOrdersList(activeOrders),
-                _buildOrdersList(completedOrders),
-                _buildOrdersList(cancelledOrders),
+                _buildOrdersList(OrderStore.active),
+                _buildOrdersList(OrderStore.completed),
+                _buildOrdersList(OrderStore.cancelled),
               ],
             ),
           ),
@@ -304,22 +248,3 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
 }
 
 // Order Model
-class Order {
-  final String id;
-  final String productName;
-  final String brand;
-  final double price;
-  final String image;
-  final String status;
-  final String orderDate;
-
-  Order({
-    required this.id,
-    required this.productName,
-    required this.brand,
-    required this.price,
-    required this.image,
-    required this.status,
-    required this.orderDate,
-  });
-}
