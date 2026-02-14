@@ -10,7 +10,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedNavIndex = 3;
-
+  String selectedLanguage = 'English';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,17 +90,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         children: [
           _buildMenuOption(
-            icon: Icons.person_outline,
-            title: 'Profile',
-            onTap: () => _navigateToProfile(),
+            icon: Icons.language,
+            title: 'Language',
+            subtitle: selectedLanguage,
+            onTap: () => _showLanguageDialog(),
           ),
           const SizedBox(height: 10),
-          _buildMenuOption(
-            icon: Icons.settings_outlined,
-            title: 'Setting',
-            onTap: () => _navigateToSettings(),
-          ),
-          const SizedBox(height: 10),
+
           _buildMenuOption(
             icon: Icons.receipt_long_outlined,
             title: 'Orders',
@@ -132,6 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildMenuOption({
     required IconData icon,
     required String title,
+    String? subtitle,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
@@ -158,13 +155,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Icon(icon, color: Colors.white, size: 20),
                 ),
                 const SizedBox(width: 14),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    if (subtitle != null)
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                  ],
                 ),
               ],
             ),
@@ -227,18 +238,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _navigateToProfile() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('You are already on Profile'),
-        duration: Duration(milliseconds: 700),
-      ),
-    );
-  }
-
-  void _navigateToSettings() {
-    Navigator.pushNamed(context, AppRoutes.settingsRoute);
-  }
+  void _navigateToSettings() {}
 
   void _showMessage(String title) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -281,6 +281,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _showLanguageDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Select Language'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: ['English', 'Spanish', 'French', 'German', 'Chinese'].map(
+              (lang) {
+                return RadioListTile<String>(
+                  title: Text(lang),
+                  value: lang,
+                  groupValue: selectedLanguage,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedLanguage = value!;
+                    });
+                    Navigator.pop(context);
+                  },
+                );
+              },
+            ).toList(),
+          ),
+        ),
       ),
     );
   }

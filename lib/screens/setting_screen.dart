@@ -9,7 +9,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String selectedLanguage = 'English';
+  String? get selectedLanguage => null;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -145,8 +147,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _buildSettingOptionWithSubtitle(
             icon: Icons.language,
             title: 'Language',
-            subtitle: selectedLanguage,
-            onTap: () => _showLanguageDialog(),
+            subtitle: selectedLanguage ?? 'Select Language',
+            onTap: () => {},
           ),
           const SizedBox(height: 10),
           _buildSettingOption(
@@ -288,32 +290,5 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _showLanguageDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Select Language'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: ['English', 'Spanish', 'French', 'German', 'Chinese'].map(
-              (lang) {
-                return RadioListTile<String>(
-                  title: Text(lang),
-                  value: lang,
-                  groupValue: selectedLanguage,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedLanguage = value!;
-                    });
-                    Navigator.pop(context);
-                  },
-                );
-              },
-            ).toList(),
-          ),
-        ),
-      ),
-    );
-  }
+ 
 }
