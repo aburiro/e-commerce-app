@@ -410,7 +410,7 @@ class _CartScreenState extends State<CartScreen> {
 
   Widget _buildBottomNavigation() {
     return BottomNavigationBar(
-      currentIndex: 1,
+      currentIndex: 2,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
       selectedItemColor: const Color(0xFF6C63FF),

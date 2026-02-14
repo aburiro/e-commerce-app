@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
+import 'cart_store.dart';
+import 'product_model.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -96,6 +98,17 @@ class _ProductListScreenState extends State<ProductListScreen> {
   }
 
   void _addToCart(ProductItem product) {
+    CartStore.addItem(
+      CartItem(
+        id: product.id,
+        name: product.name,
+        brand: 'Brand',
+        price: product.price.toDouble(),
+        quantity: 1,
+        image: product.image,
+      ),
+    );
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('${product.name} added to cart'),
@@ -171,7 +184,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   Widget _buildProductCard(ProductItem product) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, AppRoutes.productDetails),
+      onTap: () => Navigator.pushNamed(
+        context,
+        AppRoutes.productDetails,
+        arguments: ProductDetailsArgs(
+          product: Product(
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            isFavorite: product.isFavorite,
+          ),
+        ),
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,

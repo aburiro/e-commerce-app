@@ -14,17 +14,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   bool isFavorite = false;
   String? selectedSize;
 
-  late Product product;
+  Product? product;
+  Product get _product => product!;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final args =
-        ModalRoute.of(context)!.settings.arguments as ProductDetailsArgs;
-
-    product = args.product;
-    isFavorite = product.isFavorite;
+    final Object? routeArgs = ModalRoute.of(context)?.settings.arguments;
+    if (routeArgs is ProductDetailsArgs) {
+      product = routeArgs.product;
+      isFavorite = routeArgs.product.isFavorite;
+    }
   }
 
   int reviewCount = 20;
@@ -35,6 +36,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void _toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
+      if (product != null) {
+        product!.isFavorite = isFavorite;
+      }
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -49,6 +53,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
   void _buyNow() {
+    final Product? currentProduct = product;
+    if (currentProduct == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Product information is missing'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     if (selectedSize == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -61,10 +76,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     final newOrder = Order(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      productName: product.name,
+      productName: currentProduct.name,
       brand: 'Brand',
-      price: product.price.toDouble(),
-      image: product.image,
+      price: currentProduct.price.toDouble(),
+      image: currentProduct.image,
       status: 'Active',
       orderDate: DateTime.now().toString().split(' ')[0],
       quantity: 1,
@@ -84,6 +99,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Product? currentProduct = product;
+
+    if (currentProduct == null) {
+      return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        body: const Center(
+          child: Text(
+            'Product unavailable',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -139,7 +180,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.asset(product.image, fit: BoxFit.contain),
+                child: Image.asset(_product.image, fit: BoxFit.contain),
               ),
             ),
           ),
@@ -214,7 +255,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                product.name,
+                _product.name,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -239,7 +280,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
-              '\$${product.price}',
+              '\$${_product.price}',
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
