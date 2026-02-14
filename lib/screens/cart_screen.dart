@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/cart_store.dart';
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
 import './order_store.dart';
@@ -279,7 +280,7 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(
                     width: 24,
                     child: Text(
-                      '${item.quantity.toString().padLeft(2, '0')}',
+                      item.quantity.toString().padLeft(2, '0'),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 13,
@@ -464,23 +465,4 @@ class _CartScreenState extends State<CartScreen> {
       },
     );
   }
-}
-
-// Cart Item Model
-class CartItem {
-  final int id;
-  final String name;
-  final String brand;
-  final double price;
-  int quantity;
-  final String image;
-
-  CartItem({
-    required this.id,
-    required this.name,
-    required this.brand,
-    required this.price,
-    required this.quantity,
-    required this.image,
-  });
 }
