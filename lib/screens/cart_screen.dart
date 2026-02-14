@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/screens/cart_store.dart';
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
-import './order_store.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -11,42 +10,24 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  List<Order> cartItems = [];
-
-  double subtotal = 0;
   double discount = 4;
   double deliveryCharges = 2;
 
-  @override
-  void initState() {
-    super.initState();
-    _calculateSubtotal();
-  }
-
-  void _calculateSubtotal() {
-    subtotal = 0;
-    for (var item in cartItems) {
-      subtotal += item.price * item.quantity;
-    }
-    setState(() {});
-  }
-
+  List<CartItem> get cartItems => CartStore.items;
+  double get subtotal => CartStore.subtotal;
+  double get total => subtotal - discount + deliveryCharges;
   void _updateQuantity(int index, int newQuantity) {
     if (newQuantity <= 0) {
       _removeItem(index);
       return;
     }
-    setState(() {
-      cartItems[index].quantity = newQuantity;
-      _calculateSubtotal();
-    });
+    CartStore.updateQuantity(index, newQuantity);
+    setState(() {});
   }
 
   void _removeItem(int index) {
-    setState(() {
-      cartItems.removeAt(index);
-      _calculateSubtotal();
-    });
+    CartStore.removeItem(index);
+    setState(() {});
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Item removed from cart'),
@@ -55,8 +36,6 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
-
-  double get total => subtotal - discount + deliveryCharges;
 
   void _proceedToCheckout() {
     if (cartItems.isEmpty) {
@@ -79,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
         subtotal: subtotal,
         discount: discount,
         deliveryCharges: deliveryCharges,
-        total: total,
+        total: this.total,
       ),
     );
   }
@@ -101,7 +80,6 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             ),
-
       bottomNavigationBar: _buildBottomNavigation(),
     );
   }
@@ -163,7 +141,7 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         children: List.generate(
           cartItems.length,
-          (index) => _buildCartItemCard(cartItems[index] as CartItem, index),
+          (index) => _buildCartItemCard(cartItems[index], index),
         ),
       ),
     );
