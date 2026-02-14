@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
 import './product_model.dart';
 import './order_store.dart';
+import './cart_store.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({Key? key}) : super(key: key);
@@ -32,6 +33,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   double rating = 4.5;
 
   final List<String> sizes = ['8', '10', '38', '40'];
+
+  void _addCurrentProductToCart() {
+    final Product? currentProduct = product;
+    if (currentProduct == null) {
+      return;
+    }
+
+    CartStore.addItem(
+      CartItem(
+        id: currentProduct.id,
+        name: currentProduct.name,
+        brand: 'Brand',
+        price: currentProduct.price.toDouble(),
+        quantity: 1,
+        image: currentProduct.image,
+      ),
+    );
+  }
 
   void _toggleFavorite() {
     setState(() {
@@ -73,6 +92,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       );
       return;
     }
+
+    _addCurrentProductToCart();
 
     final newOrder = Order(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -456,7 +477,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ],
             ),
             child: GestureDetector(
-              onTap: () => Navigator.pushNamed(context, AppRoutes.cart),
+              onTap: () {
+                _addCurrentProductToCart();
+                Navigator.pushNamed(context, AppRoutes.cart);
+              },
               child: const Icon(
                 Icons.shopping_bag_outlined,
                 color: Colors.grey,
