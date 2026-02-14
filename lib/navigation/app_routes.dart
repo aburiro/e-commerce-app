@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/cart_screen.dart';
 import '../screens/checkout_screen.dart';
 import '../screens/filter_screen.dart';
+import '../screens/helpcenter_advancedapp.dart';
 import '../screens/home_screen.dart';
 import '../screens/orderhistory_screen.dart';
 import '../screens/productdetails_screen.dart';
@@ -10,6 +11,10 @@ import '../screens/productlist_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/searchresults_screen.dart';
 import '../screens/setting_screen.dart';
+
+import '../screens/shareapp.dart';
+
+import '../screens/contactpage_screen.dart';
 
 class CheckoutArgs {
   final int items;
@@ -37,6 +42,11 @@ class AppRoutes {
   static const String checkout = '/checkout';
   static const String orderHistory = '/orders';
   static const String profile = '/profile';
+
+  static const String helpcenter_advancedapp = '/helpcenter';
+  static const String shareapp = '/shareapp';
+  static const String contactpage_screen = '/contactpage';
+
   static const String settingsRoute = '/settings';
 
   static const List<String> mainTabRoutes = <String>[
@@ -118,6 +128,21 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const ProfileScreen(),
+        );
+      case helpcenter_advancedapp:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const HelpCenterAdvancedPage(),
+        );
+      case shareapp:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ShareAppPage(),
+        );
+      case contactpage_screen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ContactPage(),
         );
       case settingsRoute:
         return MaterialPageRoute(

@@ -106,19 +106,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _buildMenuOption(
             icon: Icons.mail_outline,
             title: 'Contact',
-            onTap: () => _showMessage('Contact'),
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.contactpage_screen),
           ),
           const SizedBox(height: 10),
           _buildMenuOption(
             icon: Icons.share_outlined,
             title: 'Share App',
-            onTap: () => _showMessage('Share App'),
+            onTap: () => Navigator.pushNamed(context, AppRoutes.shareapp),
           ),
           const SizedBox(height: 10),
           _buildMenuOption(
             icon: Icons.help_outline,
             title: 'Help',
-            onTap: () => _showMessage('Help'),
+            onTap: () =>
+                Navigator.pushNamed(context, AppRoutes.helpcenter_advancedapp),
           ),
         ],
       ),

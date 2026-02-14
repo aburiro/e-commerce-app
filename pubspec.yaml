@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  share_plus: ^6.0.0
+  share_plus: ^12.0.1
 
   # For URL launching (WhatsApp, SMS, Facebook, etc.)
   url_launcher: ^6.1.0
