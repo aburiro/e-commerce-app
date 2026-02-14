@@ -329,11 +329,11 @@ class _ContactPageState extends State<ContactPage>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildNavItem(Icons.home_outlined, false),
-              _buildNavItem(Icons.message_outlined, false),
-              _buildNavItem(Icons.apps_outlined, false),
-              _buildNavItem(Icons.notifications_none, true, badge: '1'),
-              _buildNavItem(Icons.person_outline, false),
+              // _buildNavItem(Icons.home_outlined, false),
+              // _buildNavItem(Icons.message_outlined, false),
+              // _buildNavItem(Icons.apps_outlined, false),
+              // _buildNavItem(Icons.notifications_none, true, badge: '1'),
+              // _buildNavItem(Icons.person_outline, false),
             ],
           ),
         ),
