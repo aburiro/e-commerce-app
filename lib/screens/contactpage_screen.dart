@@ -146,7 +146,7 @@ class _ContactPageState extends State<ContactPage>
                       _buildContactCard(
                         icon: Icons.email_outlined,
                         title: 'Email Us',
-                        subtitle: 'support@yourapp.com',
+                        subtitle: 'support@ecommerce.com',
                         duration: null,
                         color: const Color(0xFF8B5CF6),
                         onTap: () => _showSnackBar('Opening Email...'),
