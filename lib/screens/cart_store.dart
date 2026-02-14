@@ -1,5 +1,3 @@
-import 'order_store.dart';
-
 class CartStore {
   static final List<CartItem> items = [];
 
