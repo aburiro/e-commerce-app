@@ -142,13 +142,17 @@ class _HomeScreenState extends State<HomeScreen> {
           // User Profile
           Row(
             children: [
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: Colors.grey[300],
-                backgroundImage: const AssetImage(
-                  'assets/home_screen_image/user_profile.png',
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.grey[300],
+                  backgroundImage: const AssetImage(
+                    'assets/home_screen_image/user_profile.png',
+                  ),
                 ),
               ),
+
               const SizedBox(width: 12),
               const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,14 +174,39 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           // Notification Icon
-          IconButton(
-            icon: const Icon(
-              Icons.notifications_outlined,
-              color: Color(0xFF6C63FF),
+          Material(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(
+              30,
+            ), // Circular shape for the button
+            elevation: 0, // Ensures the background stays clean
+            child: IconButton(
+              icon: const Icon(Icons.notifications_outlined),
+              // Moved the primary purple color here so it applies correctly
+              color: const Color(0xFF6C63FF),
+
+              // 1. Highlight Color: The INSTANT millisecond response color
+              highlightColor: const Color.fromARGB(
+                255,
+                178,
+                178,
+                184,
+              ).withOpacity(0.1),
+
+              // 2. Splash Color: The smooth ripple effect
+              splashColor: const Color.fromARGB(
+                255,
+                54,
+                54,
+                56,
+              ).withOpacity(0.2),
+
+              // 3. Splash Radius: Keeps the effect tight and professional
+              splashRadius: 24,
+
+              onPressed: () =>
+                  Navigator.pushNamed(context, AppRoutes.orderHistory),
             ),
-            onPressed: () =>
-                Navigator.pushNamed(context, AppRoutes.orderHistory),
-            color: Colors.grey,
           ),
         ],
       ),

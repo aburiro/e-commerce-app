@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               shape: BoxShape.circle,
               color: Colors.grey[300],
               image: const DecorationImage(
-                image: AssetImage('assets/home_screen_image/profiles.png'),
+                image: AssetImage('assets/home_screen_image/user_profile.png'),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
@@ -62,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 16),
           // User Name
           const Text(
-            'Mark Adam',
+            'Jameel Ahmed',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 4),
           // Email
           Text(
-            'Sunny_Koelpin45@hotmail.com',
+            'jameelahmed@gmail.com',
             style: TextStyle(
               fontSize: 13,
               color: Colors.grey[600],
