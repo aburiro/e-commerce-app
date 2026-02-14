@@ -67,6 +67,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       image: product.image,
       status: 'Active',
       orderDate: DateTime.now().toString().split(' ')[0],
+      quantity: 1,
     );
 
     OrderStore.addOrder(newOrder);

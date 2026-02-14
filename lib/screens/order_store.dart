@@ -1,5 +1,3 @@
-import './product_model.dart';
-
 class OrderStore {
   static final List<Order> orders = [];
 
@@ -25,7 +23,7 @@ class Order {
   final String image;
   final String status;
   final String orderDate;
-
+  int quantity;
   Order({
     required this.id,
     required this.productName,
@@ -34,5 +32,6 @@ class Order {
     required this.image,
     required this.status,
     required this.orderDate,
+    required this.quantity,
   });
 }

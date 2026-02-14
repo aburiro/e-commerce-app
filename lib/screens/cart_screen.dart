@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../navigation/app_routes.dart';
+import './order_store.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -9,32 +10,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  List<CartItem> cartItems = [
-    CartItem(
-      id: 1,
-      name: 'Watch',
-      brand: 'Rolex',
-      price: 40,
-      quantity: 2,
-      image: 'assets/home_screen_image/watch.png',
-    ),
-    CartItem(
-      id: 2,
-      name: 'Airpods',
-      brand: 'Apple',
-      price: 333,
-      quantity: 2,
-      image: 'assets/home_screen_image/airpods.png',
-    ),
-    CartItem(
-      id: 3,
-      name: 'Hoodie',
-      brand: 'Puma',
-      price: 50,
-      quantity: 2,
-      image: 'assets/home_screen_image/hoodie.png',
-    ),
-  ];
+  List<Order> cartItems = [];
 
   double subtotal = 0;
   double discount = 4;
@@ -186,7 +162,7 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         children: List.generate(
           cartItems.length,
-          (index) => _buildCartItemCard(cartItems[index], index),
+          (index) => _buildCartItemCard(cartItems[index] as CartItem, index),
         ),
       ),
     );
