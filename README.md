@@ -1,31 +1,28 @@
 
 
 ```
-# 🛒 E-Commerce App (Flutter UI Template)
+🛒 E-Commerce App (Flutter UI Template)
 
-![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
-![UI Template](https://img.shields.io/badge/UI-Template-success?style=for-the-badge)
+
 
 A beautifully designed, comprehensive E-commerce application built with Flutter and Dart. 
 
-> **Note:** Currently, this project serves as a **Frontend UI Template**. The backend integration is not yet connected, making it the perfect boilerplate for developers looking to attach their own custom backend APIs, Firebase, or Supabase.
+>Note: Currently, this project serves as a Frontend UI Template. The backend integration is not yet connected, making it the perfect boilerplate for developers looking to attach their own custom backend APIs, Firebase, or Supabase.
 
-## ✨ Features and Screens
+✨ Features and Screens
 
-This application includes a complete set of fully designed screens required for a modern e-commerce experience:
+    This application includes a complete set of fully designed screens required for a modern e-commerce experience:
 
-* **Authentication:** Splash Screen, Login, Sign Up, and Forgot Password.
-* **Core Shopping:** Home Screen, Product List, Product Details, and Search Results.
-* **Cart & Checkout:** Shopping Cart, Checkout Flow, and Order History.
-* **User Management:** User Profile and Settings.
-* **Support & Extras:** Help Center, Contact Page, Filter Screen, and App Sharing capabilities.
+    1 Authentication: Splash Screen, Login, Sign Up, and Forgot Password.
+    2 Core Shopping:  Home Screen, Product List, Product Details, and Search Results.
+    3 Cart & Checkout: Shopping Cart, Checkout Flow, and Order History.
+    4 User Management: User Profile and Settings.
+    5 Support & Extras: Help Center, Contact Page, Filter Screen, and App Sharing capabilities.
 
-## 📂 Folder Structure
+📂 Folder Structure
 
-The application's UI is neatly organized. Here is a glance at the core `screens` directory:
+The application's UI is neatly organized. Here is a glance at the core screens directory:
 
-```text
 lib/
 │
 ├── screens/
