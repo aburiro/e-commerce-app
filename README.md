@@ -7,7 +7,11 @@
 
 A beautifully designed, comprehensive E-commerce application built with Flutter and Dart. 
 
->Note: Currently, this project serves as a Frontend UI Template. The backend integration is not yet connected, making it the perfect boilerplate for developers looking to attach their own custom backend APIs, Firebase, or Supabase.
+>Note:
+    Currently, this project serves as a Frontend UI Template. 
+    The backend integration is not yet connected,
+    making it the perfect boilerplate for developers looking to attach 
+    their own custom backend APIs, Firebase, or Supabase.
 
 ✨ Features and Screens
 
