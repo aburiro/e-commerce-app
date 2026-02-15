@@ -257,7 +257,7 @@ class _HelpCenterAdvancedPageState extends State<HelpCenterAdvancedPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7FC),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
