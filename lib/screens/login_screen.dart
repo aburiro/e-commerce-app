@@ -159,11 +159,7 @@ class _LoginScreenState extends State<LoginScreen>
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Password reset link sent'),
-                          ),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.forgotPassword);
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,

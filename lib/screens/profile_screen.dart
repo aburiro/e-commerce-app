@@ -192,7 +192,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: GestureDetector(
-        onTap: () => _showSignOutDialog(),
+        onTap: () => Navigator.pushNamed(context, AppRoutes.login),
         child: const Text(
           'Sign Out',
           style: TextStyle(

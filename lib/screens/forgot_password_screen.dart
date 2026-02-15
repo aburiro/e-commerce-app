@@ -243,7 +243,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                               boxShadow: [
                                 BoxShadow(
                                   color: const Color(
-                                    0xFF7C3AED,
+                                    0xFF6C63FF,
                                   ).withOpacity(0.1),
                                   blurRadius: 20,
                                   spreadRadius: 5,
@@ -257,7 +257,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                               const Icon(
                                 Icons.lock_outline,
                                 size: 80,
-                                color: Color(0xFF7C3AED),
+                                color: Color(0xFF6C63FF),
                               ),
                               Positioned(
                                 bottom: 20,
@@ -265,12 +265,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF7C3AED),
+                                    color: const Color(0xFF6C63FF),
                                     borderRadius: BorderRadius.circular(50),
                                     boxShadow: [
                                       BoxShadow(
                                         color: const Color(
-                                          0xFF7C3AED,
+                                          0xFF6C63FF,
                                         ).withOpacity(0.4),
                                         blurRadius: 12,
                                         spreadRadius: 3,
@@ -341,7 +341,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                 children: [
                   const Icon(
                     Icons.email_outlined,
-                    color: Color(0xFF7C3AED),
+                    color: Color(0xFF6C63FF),
                     size: 20,
                   ),
                   const SizedBox(width: 12),
@@ -393,7 +393,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
             child: ElevatedButton(
               onPressed: _isLoading ? null : _handleResetPassword,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF7C3AED),
+                backgroundColor: const Color(0xFF6C63FF),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -433,7 +433,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                     text: 'Login',
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF7C3AED),
+                      color: Color(0xFF6C63FF),
                       fontWeight: FontWeight.w600,
                     ),
                     recognizer: TapGestureRecognizer()
@@ -518,7 +518,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(
-                        color: Color(0xFF7C3AED),
+                        color: Color(0xFF6C63FF),
                         width: 2,
                       ),
                     ),
@@ -544,7 +544,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
             child: ElevatedButton(
               onPressed: _isLoading ? null : _handleOtpSubmit,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF7C3AED),
+                backgroundColor: const Color(0xFF6C63FF),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -589,7 +589,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                   'Didn\'t receive the code? Resend',
                   style: TextStyle(
                     fontSize: 12,
-                    color: Color(0xFF7C3AED),
+                    color: Color(0xFF6C63FF),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
