@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/navigation/app_routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -505,9 +506,7 @@ class _SignupScreenState extends State<SignupScreen>
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Navigate to Login')),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.login);
                       },
                   ),
                 ],

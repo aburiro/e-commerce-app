@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -249,11 +250,7 @@ class _LoginScreenState extends State<LoginScreen>
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Navigate to Sign Up'),
-                                  ),
-                                );
+                                Navigator.pushNamed(context, AppRoutes.signup);
                               },
                           ),
                         ],
@@ -539,7 +536,7 @@ class _LoginScreenState extends State<LoginScreen>
           content: Text('Email: ${_emailController.text}\nWelcome back!'),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pushNamed(context, AppRoutes.home),
               child: const Text('OK'),
             ),
           ],

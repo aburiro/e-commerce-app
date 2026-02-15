@@ -140,10 +140,10 @@ class _SplashScreenState extends State<SplashScreen>
             ),
 
             // Content section with fade animation
-            FadeTransition(
-              opacity: _fadeAnimation,
-              child: Expanded(
-                flex: 1,
+            Expanded(
+              flex: 1,
+              child: FadeTransition(
+                opacity: _fadeAnimation,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
@@ -173,6 +173,10 @@ class _SplashScreenState extends State<SplashScreen>
                         height: 56,
                         child: ElevatedButton(
                           onPressed: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              AppRoutes.login,
+                            );
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Get Started Tapped!'),
