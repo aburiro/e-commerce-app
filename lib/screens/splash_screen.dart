@@ -90,11 +90,11 @@ class _SplashScreenState extends State<SplashScreen>
                         height: 120,
                         width: 120,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF7C3AED),
+                          color: const Color(0xFF6C63FF),
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF7C3AED).withOpacity(0.3),
+                              color: const Color(0xFF6C63FF).withOpacity(0.3),
                               blurRadius: 20,
                               spreadRadius: 5,
                             ),
@@ -151,11 +151,11 @@ class _SplashScreenState extends State<SplashScreen>
                     children: [
                       const SizedBox(height: 20),
                       const Text(
-                        'YourApp',
+                        'Ecommerce App',
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF1F2937),
+                          color: Color(0xFF6C63FF),
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -184,7 +184,7 @@ class _SplashScreenState extends State<SplashScreen>
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF7C3AED),
+                            backgroundColor: const Color(0xFF6C63FF),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -211,7 +211,7 @@ class _SplashScreenState extends State<SplashScreen>
               width: 8,
               height: 8,
               decoration: BoxDecoration(
-                color: const Color(0xFF7C3AED),
+                color: const Color(0xFF6C63FF),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),

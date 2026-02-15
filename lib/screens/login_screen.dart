@@ -62,14 +62,14 @@ class _LoginScreenState extends State<LoginScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   // leading: IconButton(
+      //   //   // icon: const Icon(Icons.arrow_back, color: Colors.black),
+      //   //   onPressed: () => Navigator.pop(context),
+      //   // ),
+      // ),
       body: SingleChildScrollView(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -80,24 +80,28 @@ class _LoginScreenState extends State<LoginScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 16),
 
                   // Welcome Back Text
-                  const Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1F2937),
-                    ),
-                  ),
+                  // const Text(
+                  //   'Welcome Back',
+                  //   style: TextStyle(
+                  //     fontSize: 28,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF1F2937),
+                  //   ),
+                  // ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Login to your account',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFF9CA3AF),
-                      fontWeight: FontWeight.w500,
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: const Text(
+                      'Login to your account',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color(0xFF9CA3AF),
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
 
@@ -124,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen>
                         child: const Icon(
                           Icons.person,
                           size: 100,
-                          color: Color(0xFF7C3AED),
+                          color: Color(0xFF6C63FF),
                         ),
                       ),
                     ),
@@ -170,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen>
                         'Forgot password?',
                         style: TextStyle(
                           fontSize: 12,
-                          color: Color(0xFF7C3AED),
+                          color: Color(0xFF6C63FF),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -199,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen>
                           'Or continue with',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF9CA3AF),
+                            color: const Color(0xFF9CA3AF),
                           ),
                         ),
                       ),
@@ -215,20 +219,19 @@ class _LoginScreenState extends State<LoginScreen>
                   const SizedBox(height: 16),
 
                   // Social Login Buttons
-                  _buildSocialButton(
-                    label: 'Continue with Apple',
-                    icon: Icons.apple,
-                    delay: 400,
-                  ),
+                  // _buildSocialButton(
+                  //   label: 'Continue with Apple',
+                  //   icon: Icons.apple,
+                  //   delay: 400,
+                  // ),
 
-                  const SizedBox(height: 12),
+                  // const SizedBox(height: 12),
 
-                  _buildSocialButton(
-                    label: 'Continue with Facebook',
-                    isFacebook: true,
-                    delay: 500,
-                  ),
-
+                  // _buildSocialButton(
+                  //   label: 'Continue with Facebook',
+                  //   isFacebook: true,
+                  //   delay: 500,
+                  // ),
                   const SizedBox(height: 20),
 
                   // Sign Up Link
@@ -245,7 +248,7 @@ class _LoginScreenState extends State<LoginScreen>
                             text: 'Sign up',
                             style: const TextStyle(
                               fontSize: 12,
-                              color: Color(0xFF7C3AED),
+                              color: Color(0xFF6C63FF),
                               fontWeight: FontWeight.w600,
                             ),
                             recognizer: TapGestureRecognizer()
@@ -297,7 +300,7 @@ class _LoginScreenState extends State<LoginScreen>
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              Icon(icon, color: const Color(0xFF7C3AED), size: 20),
+              Icon(icon, color: const Color(0xFF6C63FF), size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: TextField(
@@ -358,7 +361,7 @@ class _LoginScreenState extends State<LoginScreen>
             children: [
               const Icon(
                 Icons.lock_outlined,
-                color: Color(0xFF7C3AED),
+                color: const Color(0xFF6C63FF),
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -422,7 +425,7 @@ class _LoginScreenState extends State<LoginScreen>
         child: ElevatedButton(
           onPressed: _isLoading ? null : _handleLogin,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF7C3AED),
+            backgroundColor: const Color(0xFF6C63FF),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
