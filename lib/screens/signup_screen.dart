@@ -1,14 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreenAnimated extends StatefulWidget {
-  const SignupScreenAnimated({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignupScreenAnimated> createState() => _SignupScreenAnimatedState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenAnimatedState extends State<SignupScreenAnimated>
+class _SignupScreenState extends State<SignupScreen>
     with TickerProviderStateMixin {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();

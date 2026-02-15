@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import '../navigation/app_routes.dart';
 
-class SplashScreenAnimated extends StatefulWidget {
-  const SplashScreenAnimated({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreenAnimated> createState() => _SplashScreenAnimatedState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenAnimatedState extends State<SplashScreenAnimated>
+class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _bagController;
   late AnimationController _fadeController;

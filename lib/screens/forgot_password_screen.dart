@@ -1,16 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordScreenAnimated extends StatefulWidget {
-  const ForgotPasswordScreenAnimated({Key? key}) : super(key: key);
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPasswordScreenAnimated> createState() =>
-      _ForgotPasswordScreenAnimatedState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordScreenAnimatedState
-    extends State<ForgotPasswordScreenAnimated>
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     with TickerProviderStateMixin {
   final TextEditingController _emailController = TextEditingController();
   final List<TextEditingController> _otpControllers = List.generate(
