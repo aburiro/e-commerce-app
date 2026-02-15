@@ -89,14 +89,14 @@ class _SignupScreenState extends State<SignupScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back, color: Colors.black),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -110,12 +110,15 @@ class _SignupScreenState extends State<SignupScreen>
                   const SizedBox(height: 20),
 
                   // Create Account Text
-                  const Text(
-                    'Create Account',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1F2937),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: const Text(
+                      'Create Account',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1F2937),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -158,7 +161,7 @@ class _SignupScreenState extends State<SignupScreen>
                         child: const Icon(
                           Icons.shopping_bag_rounded,
                           size: 100,
-                          color: Color(0xFF7C3AED),
+                          color: Color(0xFF6C63FF),
                         ),
                       ),
                     ),
@@ -210,51 +213,48 @@ class _SignupScreenState extends State<SignupScreen>
 
                   const SizedBox(height: 20),
 
-                  // Divider
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 1,
-                          color: const Color(0xFFE5E7EB),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        child: Text(
-                          'Or sign up with',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF9CA3AF),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 1,
-                          color: const Color(0xFFE5E7EB),
-                        ),
-                      ),
-                    ],
-                  ),
-
+                  // // Divider
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child: Container(
+                  //         height: 1,
+                  //         color: const Color(0xFFE5E7EB),
+                  //       ),
+                  //     ),
+                  //     const Padding(
+                  //       padding: EdgeInsets.symmetric(horizontal: 12),
+                  //       child: Text(
+                  //         'Or sign up with',
+                  //         style: TextStyle(
+                  //           fontSize: 12,
+                  //           color: Color(0xFF9CA3AF),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     Expanded(
+                  //       child: Container(
+                  //         height: 1,
+                  //         color: const Color(0xFFE5E7EB),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(height: 16),
 
                   // Social Signup Buttons
-                  _buildAnimatedSocialButton(
-                    label: 'Sign up with Apple',
-                    icon: Icons.apple,
-                    delay: 600,
-                  ),
-
+                  // _buildAnimatedSocialButton(
+                  //   label: 'Sign up with Apple',
+                  //   icon: Icons.apple,
+                  //   delay: 600,
+                  // ),
                   const SizedBox(height: 12),
 
-                  _buildAnimatedSocialButton(
-                    label: 'Sign up with Google',
-                    isGoogle: true,
-                    delay: 700,
-                  ),
-
+                  // _buildAnimatedSocialButton(
+                  //   label: 'Sign up with Google',
+                  //   isGoogle: true,
+                  //   delay: 700,
+                  // ),
                   const SizedBox(height: 30),
                 ],
               ),
@@ -298,7 +298,7 @@ class _SignupScreenState extends State<SignupScreen>
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              Icon(icon, color: const Color(0xFF7C3AED), size: 20),
+              Icon(icon, color: const Color(0xFF6C63FF), size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: TextField(
@@ -367,7 +367,7 @@ class _SignupScreenState extends State<SignupScreen>
             children: [
               const Icon(
                 Icons.lock_outlined,
-                color: Color(0xFF7C3AED),
+                color: Color(0xFF6C63FF),
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -472,49 +472,49 @@ class _SignupScreenState extends State<SignupScreen>
           ),
         );
       },
-      child: Row(
-        children: [
-          SizedBox(
-            width: 24,
-            height: 24,
-            child: Checkbox(
-              value: _agreeToTerms,
-              onChanged: (value) {
-                setState(() {
-                  _agreeToTerms = value ?? false;
-                });
-              },
-              activeColor: const Color(0xFF7C3AED),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: RichText(
-              text: TextSpan(
-                text: 'Already have an account? ',
-                style: const TextStyle(fontSize: 12, color: Color(0xFF9CA3AF)),
-                children: [
-                  TextSpan(
-                    text: 'Login',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF7C3AED),
-                      fontWeight: FontWeight.w600,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Navigator.pushNamed(context, AppRoutes.login);
-                      },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      // child: Row(
+      //   children: [
+      //     SizedBox(
+      //       width: 24,
+      //       height: 24,
+      //       child: Checkbox(
+      //         value: _agreeToTerms,
+      //         onChanged: (value) {
+      //           setState(() {
+      //             _agreeToTerms = value ?? false;
+      //           });
+      //         },
+      //         activeColor: const Color(0xFF7C3AED),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(6),
+      //         ),
+      //       ),
+      //     ),
+      //     const SizedBox(width: 12),
+      //     // Expanded(
+      //     //   child: RichText(
+      //     //     text: TextSpan(
+      //     //       text: 'Already have an account? ',
+      //     //       style: const TextStyle(fontSize: 12, color: Color(0xFF9CA3AF)),
+      //     //       children: [
+      //     //         TextSpan(
+      //     //           text: 'Login',
+      //     //           style: const TextStyle(
+      //     //             fontSize: 12,
+      //     //             color: Color(0xFF7C3AED),
+      //     //             fontWeight: FontWeight.w600,
+      //     //           ),
+      //     //           recognizer: TapGestureRecognizer()
+      //     //             ..onTap = () {
+      //     //               Navigator.pushNamed(context, AppRoutes.login);
+      //     //             },
+      //     //         ),
+      //     //       ],
+      //     //     ),
+      //     //   ),
+      //     // ),
+      //   ],
+      // ),
     );
   }
 
@@ -538,7 +538,7 @@ class _SignupScreenState extends State<SignupScreen>
         child: ElevatedButton(
           onPressed: _isLoading ? null : _handleSignup,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF7C3AED),
+            backgroundColor: const Color(0xFF6C63FF),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -600,7 +600,7 @@ class _SignupScreenState extends State<SignupScreen>
                   width: 24,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1877F2),
+                    color: const Color(0xFF6C63FF),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: const Center(

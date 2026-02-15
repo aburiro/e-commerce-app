@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Ecommerce App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF6C63FF)),
       ),
       initialRoute: AppRoutes.splash,
       onGenerateRoute: AppRoutes.onGenerateRoute,
