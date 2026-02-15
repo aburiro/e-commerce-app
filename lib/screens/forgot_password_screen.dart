@@ -1,24 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Forgot Password',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      home: const ForgotPasswordScreenAnimated(),
-    );
-  }
-}
-
 class ForgotPasswordScreenAnimated extends StatefulWidget {
   const ForgotPasswordScreenAnimated({Key? key}) : super(key: key);
 
