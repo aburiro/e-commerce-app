@@ -109,15 +109,3 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-```
-
-***
-
-**How to use this:**
-1. Create a file named `README.md` in the root folder of your project.
-2. Paste the code block above into that file.
-3. Commit and push it to your GitHub repository.
-
-Would you like some recommendations on which backend to choose (like Firebase vs. Supabase vs. custom Node.js) when you are ready to connect it?
-
-```
