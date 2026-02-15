@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -264,15 +265,14 @@ class _LoginScreenAnimatedState extends State<LoginScreenAnimated>
                               color: Color(0xFF7C3AED),
                               fontWeight: FontWeight.w600,
                             ),
-                            recognizer: TapGestureRecognizer(
-                              onTap: () {
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content: Text('Navigate to Sign Up'),
                                   ),
                                 );
                               },
-                            ),
                           ),
                         ],
                       ),
